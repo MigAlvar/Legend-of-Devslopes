@@ -20,7 +20,14 @@ public class EnemyMove : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		nav.SetDestination(player.position);
+	void Update ()
+	{
+		if (!GameManager.instance.GameOver) {
+			nav.SetDestination (player.position);
+			//anim.Play("Tanker_Walk");
+		} else {
+			nav.enabled = false;
+			anim.Play("Tanker_Idle");
+		}
 	}
 }
